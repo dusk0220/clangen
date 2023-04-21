@@ -7,6 +7,7 @@ from scripts.game_structure.game_essentials import game
 class Sprites():
     cat_tints = {}
     white_patches_tints = {}
+    eye_tints = {}
 
     def __init__(self, original_size, new_size=None):
         self.size = original_size  # size of a single sprite in a spritesheet
@@ -30,6 +31,12 @@ class Sprites():
                 Sprites.white_patches_tints = ujson.loads(read_file.read())
         except:
             print("ERROR: Reading White Patches Tints")
+            
+        try:
+            with open("sprites/dicts/eye_tint.json", 'r') as read_file:
+                Sprites.eye_tints = ujson.loads(read_file.read())
+        except:
+            print("ERROR: Reading Eye Tints")
 
     def spritesheet(self, a_file, name):
         """
@@ -240,14 +247,14 @@ for a, i in enumerate(
 
 # white patches
 for a, i in enumerate(['FULLWHITE', 'ANY', 'TUXEDO', 'LITTLE', 'COLOURPOINT', 'VAN', 'ANYTWO',
-    'MOON', 'PHANTOM', 'POWDER']):
+    'MOON', 'PHANTOM', 'POWDER', 'BLEACHED']):
     sprites.make_group('whitepatches', (a, 0), f'white{i}')
 for a, i in enumerate(['EXTRA', 'ONEEAR', 'BROKEN', 'LIGHTTUXEDO', 'BUZZARDFANG', 'RAGDOLL', 
     'LIGHTSONG', 'VITILIGO', 'BLACKSTAR', 'PIEBALD', 'CURVED', 'PETAL']):
     sprites.make_group('whitepatches', (a, 1), f'white{i}')
 # ryos white patches
 for a, i in enumerate(['TIP', 'FANCY', 'FRECKLES', 'RINGTAIL', 'HALFFACE', 'PANTSTWO', 'GOATEE', 'VITILIGOTWO',
-    'PAWS', 'MITAINE', 'BROKENBLAZE', 'SCOURGE']):
+    'PAWS', 'MITAINE', 'BROKENBLAZE', 'SCOURGE', 'DIVA']):
     sprites.make_group('whitepatches', (a, 2), f'white{i}')
 for a, i in enumerate(['TAIL', 'BLAZE', 'PRINCE', 'BIB', 'VEE', 'UNDERS', 'HONEY',
     'FAROFA', 'DAMIEN', 'MISTER', 'BELLY', 'TAILTIP', 'TOES']):
@@ -360,7 +367,7 @@ for a, i in enumerate(['MINIMALONE', 'MINIMALTWO', 'MINIMALTHREE', 'MINIMALFOUR'
     sprites.make_group('tortiepatchesmasks', (a, 1), f"tortiemask{i}")
 for a, i in enumerate(['MOTTLED', 'SIDEMASK', 'EYEDOT', 'BANDANA', 'PACMAN', 'STREAMSTRIKE']):
     sprites.make_group('tortiepatchesmasks', (a, 2), f"tortiemask{i}")
-for a, i in enumerate(['ORIOLE', 'ROBIN', 'BRINDLE', 'PAIGE']):
+for a, i in enumerate(['ORIOLE', 'ROBIN', 'BRINDLE', 'PAIGE', 'ROSETAIL', 'SAFI']):
     sprites.make_group('tortiepatchesmasks', (a, 3), f"tortiemask{i}")
 
 # SKINS
